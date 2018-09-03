@@ -1,0 +1,15 @@
+1.继承Thread类、实现Runnable接口、使用ExecutorService、Callable、Future实现有返回结果的多线程。其中前两种方式线程执行完后都没有返回值，只有最后一种是带返回值的。
+java的同步机制,一般有:
+1.synchronized；
+2.Object方法中的wait,notify；
+3.ThreadLocal机制?? 来实现的。
+
+如果需要隔离多个线程之间的共享冲突，可以使用ThreadLocal
+
+2.sleep来自Thread类，和wait来自Object类。sleep方法没有释放锁，而wait方法释放了锁。使用范围：wait，notify和notifyAll只能在同步控制方法或者同步控制块里面使用，而sleep可以在任何地方使用。
+
+6.有两种：1.Map map = new ConcurrentHashMap();2.Map map = Collections.synchronizedMap(new HashMap());
+
+7.ArrayList 采用的是数组形式来保存对象查询快，增删慢。LinkedList 采用的将对象存放在独立的空间中，而且在每个空间中还保存下一个链接的索引，增删快，查询慢。ArrayList和Vector都是用数组方式存储数据,Vector是线程安全，ArrayList是线程不安全。当需要增长时,Vector默认增长为原来一培，而ArrayList却是原来的一半。
+
+8.JVM中类的装载是由类加载器（ClassLoader）和它的子类来实现的，经过编译的Java源程序并不是一个可执行程序，而是一个或多个类文件。当Java程序需要使用某个类时，JVM会确保这个类已经被加载、连接（验证、准备和解析）和初始化。类的加载是指把类的.class文件中的数据读入到内存中，通常是创建一个字节数组读入.class文件，然后产生与所加载类对应的Class对象。加载完成后，Class对象还不完整，所以此时的类还不可用。当类被加载后就进入连接阶段，这一阶段包括验证、准备（为静态变量分配内存并设置默认的初始值）和解析（将符号引用替换为直接引用）三个步骤。最后JVM对类进行初始化，包括：1)如果类存在直接的父类并且这个类还没有被初始化，那么就先初始化父类；2)如果类中存在初始化语句，就依次执行这些初始化语句。
